@@ -22,7 +22,6 @@ public class Controller extends Thread {
 	private volatile boolean running = true;
 	private Consumer consumer;
 	private View view;
-//	private ProgressbarUpdator progressbarUpdator;
 		
 	public Controller (GUISemaphore ui) {
 		buffer = new Buffer(ui);	
@@ -35,13 +34,11 @@ public class Controller extends Thread {
 			newThreadScan = new Producer (buffer); 
 			if (start == true) {
 				newThreadScan.start();
-//				System.out.print("ThreadScan Controller Start" + "\n");
 			} 
 	}
 	
 	public void stopScanProducer() {
 		newThreadScan.suspend();
-//		System.out.print("ThreadScan Controller Stop");
 	}
 	
 	
@@ -49,16 +46,12 @@ public class Controller extends Thread {
 		newThreadArla = new Producer (buffer); 		
 		if (start == true) {
 			newThreadArla.start();	
-//			System.out.print("ThreadArla Controller Start");
 		}
-//		else {
-//			newThreadArla.interrupt();
-//		}
 	}
 	
 	public void stopArlaProducer() {
 		newThreadArla.suspend();
-//		System.out.print("ThreadSArla Controller Stop");
+
 	}
 	
 	
@@ -66,13 +59,11 @@ public class Controller extends Thread {
 		newThreadAxFood = new Producer (buffer); 
 		if (start == true) {
 			newThreadAxFood.start();	
-//			System.out.print("ThreadAxFood Controller Start");
 		}
 	}
 	
 	public void stopAxFoodProducer() {
 		newThreadAxFood.suspend();
-//		System.out.print("ThreadAxFood Controller Stop");
 	}
 
 	
@@ -108,9 +99,5 @@ public class Controller extends Thread {
 		((Consumer) newThreadCityGross).shutdown();
 	}
 	
-//	public void progressbar(int number) {
-//		progressbarUpdator = new ProgressbarUpdator(number, ui);
-//		progressbarUpdator.start();
-//	}
 }
 
